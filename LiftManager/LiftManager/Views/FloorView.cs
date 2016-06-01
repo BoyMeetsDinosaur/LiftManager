@@ -73,28 +73,34 @@ namespace LiftManager.Views
                 Spacing = 0
             };
             containerLayout.Children.Add(contentLayout);
-            
-            Image meepleIcon = new Image {
-                Aspect = Aspect.AspectFill,
-                WidthRequest = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                Source = ImageSource.FromResource("LiftManager.meeple.png"),
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.Center
-            };
-            contentLayout.Children.Add(meepleIcon);
 
-            Label occupantCountLabel = new Label
+            StackLayout occupantContainer = new StackLayout
             {
-                Text = data.occupants.ToString(),
-                TextColor = Color.White,
-                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalTextAlignment = TextAlignment.Start,
-                VerticalTextAlignment = TextAlignment.Center,
-                BackgroundColor = Color.FromHex("#6bc0c4")
+                Padding = 0,
+                Children = {
+                    new Image {
+                        Aspect = Aspect.AspectFill,
+                        WidthRequest = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        Source = ImageSource.FromResource("LiftManager.meeple.png"),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.CenterAndExpand
+                    },
+                    new Label
+                    {
+                        Text = data.occupants.ToString(),
+                        TextColor = Color.White,
+                        FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Center
+                    }
+                }
             };
-            contentLayout.Children.Add (occupantCountLabel);
+            contentLayout.Children.Add (occupantContainer);
                                                 
             if (data.travellers > 0)
             {

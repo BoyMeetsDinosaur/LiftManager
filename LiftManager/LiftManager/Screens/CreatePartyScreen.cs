@@ -36,6 +36,7 @@ namespace LiftManager.Screens
             {
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = String.Format("Floor {0} : Create Travel Party", floor.floorNumber)
             };
 
@@ -43,6 +44,7 @@ namespace LiftManager.Screens
             {
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = "Please select the number of passengers and desired floor for this journey."
             };
 
@@ -71,12 +73,14 @@ namespace LiftManager.Screens
             {
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = String.Format("Destination floor : {0}/{1}", (int)destinationStepper.Value, 10)
             };
 
             passengersLabel = new Label
             {
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                HorizontalTextAlignment = TextAlignment.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Text = String.Format("Passengers travelling : {0}/{1} ", (int)passengerStepper.Value, floor.occupants)
             };
@@ -93,6 +97,7 @@ namespace LiftManager.Screens
                 Orientation = StackOrientation.Vertical,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
+                Padding = 10,
                 Children =
                 {
                     titleLabel,
@@ -104,7 +109,7 @@ namespace LiftManager.Screens
                     new StackLayout
                     {
                         Orientation = StackOrientation.Horizontal,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.EndAndExpand,
                         Children = {
                             cancelButton,
