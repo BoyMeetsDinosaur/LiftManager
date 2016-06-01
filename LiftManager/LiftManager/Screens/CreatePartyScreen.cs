@@ -18,6 +18,7 @@ namespace LiftManager.Screens
         Floor floor;
         Stepper destinationStepper, passengerStepper;
         Label destinationLabel, passengersLabel;
+        Button confirmButton, cancelButton;
 
         public CreatePartyScreen(Floor floor, EventHandler<PartyEventArgs> ConfirmEvent, EventHandler<EventArgs> CancelEvent)
         {
@@ -70,7 +71,7 @@ namespace LiftManager.Screens
             {
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Text = String.Format("Destination Floor : {0}/{1}", (int)destinationStepper.Value, 10)
+                Text = String.Format("Destination floor : {0}/{1}", (int)destinationStepper.Value, 10)
             };
 
             passengersLabel = new Label
@@ -80,11 +81,12 @@ namespace LiftManager.Screens
                 Text = String.Format("Passengers travelling : {0}/{1} ", (int)passengerStepper.Value, floor.occupants)
             };
 
-            Button cancelButton = new Button { Text = "Cancel" };
+            cancelButton = new Button { Text = "Cancel" };
             cancelButton.Clicked += OnCancelButtonClicked;
 
-            Button confirmButton = new Button { Text = "Confirm" };
+            confirmButton = new Button { Text = "Confirm" };
             confirmButton.Clicked += OnConfirmButtonClicked;
+            confirmButton.IsEnabled = (destinationStepper.Value != floor.floorNumber);
 
             Content = new StackLayout
             {
@@ -133,6 +135,9 @@ namespace LiftManager.Screens
         void OnDestinationStepperValueChanged(object sender, ValueChangedEventArgs e)
         {                        
             destinationLabel.Text = String.Format("Destination Floor : {0}/{1}", (int)e.NewValue, 10);
+
+            // Disable 'confirm' button if the destination is set to the current floor
+            confirmButton.IsEnabled = (e.NewValue != floor.floorNumber);                
         }
     }
 }

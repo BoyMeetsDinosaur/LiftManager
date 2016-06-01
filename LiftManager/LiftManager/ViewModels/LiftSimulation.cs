@@ -174,7 +174,7 @@ namespace LiftManager.ViewModels
         {
             foreach (Lift lift in Lifts)
             {
-                if (lift.destinationLevel == floor.floorNumber) return true;
+                if (lift.destinationLevel == floor.floorNumber && lift.passengers == 0) return true;
             }
 
             return false;
