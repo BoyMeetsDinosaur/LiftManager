@@ -72,7 +72,7 @@ namespace LiftManager.Screens
                 LiftView liftView = new LiftView(viewModel.Lifts[i], viewModel.Floors.Count);
                 int column = liftView.data.liftNumber; // liftNumber is not a zero-based index, so it accounts for the 'floor' column offset
 
-                for (var r = 1; r < (visualisationGrid.RowDefinitions.Count +1); r++)
+                for (int r = 1; r < (visualisationGrid.RowDefinitions.Count +1); r++)
                 {
                     int gridRow = (visualisationGrid.RowDefinitions.Count + 1) - r; // offset by 1 to account for header row
 
@@ -153,7 +153,7 @@ namespace LiftManager.Screens
 
         async void OnCreatePartyClick(object sender, FloorEventArgs args)
         {
-            var nextPage = new CreatePartyScreen(
+            CreatePartyScreen nextPage = new CreatePartyScreen(
                 args.floor, 
                 OnPartyCreateConfirmation, 
                 OnPartyCreateCancel

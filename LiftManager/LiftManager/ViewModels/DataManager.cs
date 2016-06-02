@@ -7,6 +7,9 @@ using LiftManager.Model;
 
 namespace LiftManager.ViewModels
 {
+    /// <summary>
+    /// Simple model data storage class.
+    /// </summary>
     class DataManager
     {
         public List<Floor> floors = new List<Floor>();

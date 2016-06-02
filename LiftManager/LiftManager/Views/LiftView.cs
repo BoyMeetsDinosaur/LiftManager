@@ -34,11 +34,9 @@ namespace LiftManager.Views
                 if (data.currentLevel == i)
                 {
                     SetCarriageLabelView(views[i - 1]);
-                    //views[i-1].Content = GetLiftCarriageView();
                 } else
                 {
                     SetEmptyView(views[i - 1]);
-                    //views[i-1].Content = null;
                 }                
             }
             viewIsDirty = false;
